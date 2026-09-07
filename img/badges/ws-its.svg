@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="88" height="31" viewBox="0 0 88 31" shape-rendering="crispEdges">
+<rect x="0" y="0" width="88" height="31" fill="#333333"/>
+<rect x="0.5" y="0.5" width="87" height="30" fill="none" stroke="#ff9900" stroke-width="1"/>
+<g font-family="Verdana,Geneva,DejaVu Sans,sans-serif" text-anchor="middle" shape-rendering="geometricPrecision">
+<text x="44" y="11.0" font-size="7" font-weight="bold" fill="#999999">it's</text>
+<text x="44" y="26.0" font-size="12" font-weight="bold" fill="#ff9900">WoahSoft</text>
+</g>
+</svg>

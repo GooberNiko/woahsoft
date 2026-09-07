@@ -1,0 +1,342 @@
+/* ============================================================
+   WoahSoft.com Official Style Sheet v0.3 BETA
+   Optimized for Netscape Navigator 4.7 @ 800x600
+   DO NOT EDIT. (i lost the backup)
+   ============================================================ */
+
+html {
+  /* tiled starfield-ish background, hand made in paint */
+  background-color: #000044;
+  background-image:
+    radial-gradient(circle at 12px 9px, #ffffff 0.9px, transparent 1.2px),
+    radial-gradient(circle at 44px 31px, #aaccff 0.8px, transparent 1.1px),
+    radial-gradient(circle at 70px 60px, #ffffff 0.7px, transparent 1px),
+    radial-gradient(circle at 25px 72px, #6688ff 1.1px, transparent 1.4px);
+  background-size: 90px 90px;
+}
+
+body {
+  margin: 0;
+  padding: 10px 0 40px 0;
+  font-family: "Comic Sans MS", "Comic Sans", "Chalkboard", cursive;
+  font-size: 15px;
+  color: #000000;
+  cursor: crosshair;
+}
+
+/* ---- the sacred 780px table-era container ---- */
+.page {
+  width: 780px;
+  margin: 0 auto;
+  background: #d8d8f0;
+  border: 3px ridge #4444cc;
+  padding: 0;
+}
+
+/* ---------- HEADER ---------- */
+.header {
+  background: #ffffff;
+  border-bottom: 4px double #2222aa;
+  text-align: center;
+  padding: 6px 0 0 0;
+}
+.header img.logo {
+  display: block;
+  margin: 0 auto;
+  width: 620px;
+  max-width: 100%;
+}
+.header .underconstruction {
+  font-size: 12px;
+  color: #cc0000;
+  padding: 2px 0 5px 0;
+  font-weight: bold;
+}
+
+/* ---------- MARQUEE-ish TICKER ---------- */
+.ticker {
+  background: #000000;
+  color: #00ff00;
+  font-family: "Courier New", monospace;
+  font-size: 13px;
+  padding: 3px 0;
+  overflow: hidden;
+  white-space: nowrap;
+  border-bottom: 2px solid #4444cc;
+}
+.ticker span {
+  display: inline-block;
+  padding-left: 100%;
+  animation: slide 28s linear infinite;
+}
+@keyframes slide { to { transform: translateX(-100%); } }
+
+/* ---------- NAVBAR ---------- */
+.navbar {
+  background: #2222aa;
+  padding: 5px 4px;
+  text-align: center;
+  border-bottom: 2px solid #000066;
+}
+.navbar a {
+  color: #ffff66;
+  background: #3333cc;
+  border: 2px outset #7777ee;
+  padding: 2px 8px;
+  margin: 2px 1px;
+  display: inline-block;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: bold;
+}
+/* visited links must NOT go purple in here, it is unreadable on the blue */
+.navbar a:visited { color: #ffff66; }
+.navbar a.here:visited { color: #cc0000; }
+.navbar a:hover {
+  background: #ffff66;
+  color: #2222aa;
+  border-style: inset;
+}
+.navbar a.here { background: #ffff66; color: #cc0000; border-style: inset; }
+
+/* ---------- LAYOUT ---------- */
+.cols { display: table; width: 100%; }
+.sidebar {
+  display: table-cell;
+  width: 168px;
+  vertical-align: top;
+  background: #b8b8e0;
+  border-right: 2px groove #ffffff;
+  padding: 8px 6px;
+  font-size: 12px;
+}
+.content {
+  display: table-cell;
+  vertical-align: top;
+  padding: 12px 16px 20px 16px;
+  background: #e8e8f8;
+}
+
+/* ---------- HEADINGS ---------- */
+h1, h2, h3 {
+  font-family: "Comic Sans MS", "Comic Sans", cursive;
+  margin: 0 0 8px 0;
+  color: #1a1a88;
+  text-shadow: 2px 2px 0 #aaaacc;
+}
+h1 { font-size: 26px; }
+h2 {
+  font-size: 20px;
+  border-bottom: 2px dotted #2222aa;
+  padding-bottom: 3px;
+  margin-top: 22px;
+}
+h3 { font-size: 16px; color: #cc0066; text-shadow: none; }
+.content > h2:first-child, .content > h1:first-child { margin-top: 0; }
+
+p { line-height: 1.5; margin: 0 0 12px 0; }
+a { color: #0000ee; }
+a:visited { color: #660099; }
+a:hover { color: #ff0000; background: #ffff99; }
+
+hr.fancy {
+  border: 0;
+  height: 6px;
+  background: repeating-linear-gradient(90deg,
+    #ff0000 0 10px, #ff9900 10px 20px, #ffff00 20px 30px,
+    #00cc00 30px 40px, #0066ff 40px 50px, #9900cc 50px 60px);
+  margin: 18px 0;
+}
+
+/* ---------- BLINK / GLOW ---------- */
+.blink { animation: blinky 1s steps(1) infinite; font-weight: bold; color: #ff0000; }
+@keyframes blinky { 50% { opacity: 0; } }
+.new {
+  color: #ff0000; font-size: 11px; font-weight: bold;
+  animation: blinky 0.8s steps(1) infinite;
+}
+.rainbow {
+  background: linear-gradient(90deg,#ff0000,#ff9900,#ffff00,#00cc00,#0099ff,#9900cc,#ff0000);
+  background-size: 400% 100%;
+  -webkit-background-clip: text; background-clip: text;
+  color: transparent;
+  animation: roll 6s linear infinite;
+  font-weight: bold;
+}
+@keyframes roll { to { background-position: 400% 0; } }
+
+/* ---------- SOFTWARE BOXES ---------- */
+.prog {
+  background: #ffffff;
+  border: 2px outset #9999cc;
+  padding: 10px 12px;
+  margin: 0 0 14px 0;
+}
+.prog h3 { margin: 0 0 4px 0; }
+.prog .meta {
+  font-family: "Courier New", monospace;
+  font-size: 11px;
+  color: #444466;
+  margin-bottom: 6px;
+}
+.prog p { margin-bottom: 8px; font-size: 14px; }
+.dlbtn {
+  display: inline-block;
+  background: linear-gradient(#7788ee, #2222aa);
+  color: #ffffff !important;
+  border: 2px outset #aabbff;
+  padding: 3px 12px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 13px;
+}
+.dlbtn:hover { border-style: inset; background: linear-gradient(#2222aa,#7788ee); }
+.tag {
+  font-size: 10px; font-family: "Courier New", monospace;
+  background: #ffff99; border: 1px solid #999900; padding: 0 4px; margin-left: 4px;
+}
+.tag.broke { background: #ffcccc; border-color: #990000; color: #990000; }
+.tag.works { background: #ccffcc; border-color: #009900; color: #006600; }
+
+/* ---------- SIDEBAR BITS ---------- */
+.sidebox {
+  background: #e8e8f8;
+  border: 2px inset #ffffff;
+  padding: 6px;
+  margin-bottom: 10px;
+}
+.sidebox h4 {
+  margin: 0 0 5px 0; font-size: 13px; color: #cc0066;
+  border-bottom: 1px dashed #8888aa; padding-bottom: 2px;
+}
+.sidebox ul { margin: 0; padding-left: 16px; }
+.sidebox li { margin-bottom: 3px; }
+
+.counter {
+  font-family: "Courier New", monospace;
+  background: #000000; color: #00ff00;
+  border: 2px inset #666666;
+  padding: 3px 5px; letter-spacing: 3px; font-size: 15px;
+  display: inline-block;
+}
+
+/* real 88x31 buttons, like god intended */
+img.badge {
+  display: inline-block;
+  width: 88px; height: 31px;
+  margin: 2px 1px;
+  border: 0;
+  vertical-align: top;
+  image-rendering: crisp-edges;
+}
+
+/* ---------- MISC ---------- */
+.warnbox {
+  background: #ffffcc;
+  border: 3px dashed #cc0000;
+  padding: 8px 10px;
+  margin: 14px 0;
+  font-size: 13px;
+}
+.emailme {
+  background:#000066; color:#ffffff; padding:6px 10px;
+  border:2px ridge #6666ff; display:inline-block; font-size:13px;
+}
+table.specs { border-collapse: collapse; width: 100%; font-size: 13px; background:#ffffff; }
+table.specs th { background:#2222aa; color:#ffff66; padding:4px 6px; text-align:left; }
+table.specs td { border:1px solid #9999bb; padding:4px 6px; }
+table.specs tr:nth-child(even) td { background:#f0f0ff; }
+
+.footer {
+  background: #ffffff;
+  border-top: 4px double #2222aa;
+  text-align: center;
+  padding: 10px;
+  font-size: 11px;
+  color: #333355;
+}
+.footer .disclaim { color:#777799; font-size:10px; margin-top:6px; }
+
+.spin { display:inline-block; animation: spin 3s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.wiggle { display:inline-block; animation: wig 0.6s ease-in-out infinite alternate; }
+@keyframes wig { from{transform:rotate(-6deg)} to{transform:rotate(6deg)} }
+
+.guest {
+  background:#ffffff; border:1px solid #9999bb; border-left:5px solid #2222aa;
+  padding:6px 8px; margin-bottom:8px; font-size:13px;
+}
+.guest .who { font-weight:bold; color:#2222aa; }
+.guest .when { font-size:10px; color:#777777; font-family:"Courier New",monospace; }
+/* for the long one */
+.guest p { margin: 6px 0 8px 0; line-height: 1.45; }
+.guest p:last-child { margin-bottom: 0; }
+
+/* ---------- MIDI JUKEBOX ---------- */
+.jukebox { text-align: left; }
+.jukebox .lcd {
+  background: #000000; color: #00ff00;
+  border: 2px inset #666666;
+  font-family: "Courier New", monospace;
+  font-size: 10px;
+  padding: 3px 4px;
+  margin-bottom: 5px;
+  white-space: nowrap; overflow: hidden;
+}
+.jukebox .lcd .spin { animation-duration: 1.6s; }
+.jukebox ul.tracklist { list-style: none; margin: 0 0 5px 0; padding: 0; }
+.jukebox ul.tracklist li { margin: 0 0 2px 0; }
+.jukebox ul.tracklist a {
+  display: block;
+  font-family: "Courier New", monospace;
+  font-size: 11px;
+  text-decoration: none;
+  padding: 1px 4px;
+  border: 1px outset #ccccee;
+  background: #ccccee;
+  color: #000066;
+}
+.jukebox ul.tracklist a:hover { background: #ffff99; color: #cc0000; }
+.jukebox ul.tracklist a.playing {
+  background: #2222aa; color: #ffff66; border-style: inset;
+}
+.jukebox ul.tracklist a.playing:before { content: "\25B6 "; }
+.jbcontrols { font-size: 10px; }
+.jbcontrols button {
+  font-family: "Courier New", monospace;
+  font-size: 10px;
+  border: 2px outset #aaaacc;
+  background: #ccccee;
+  padding: 1px 5px;
+  cursor: pointer;
+}
+.jbcontrols button:active { border-style: inset; }
+.jbcontrols label { margin-left: 6px; }
+
+/* ---------- the secret link. barely there until you touch it. ---------- */
+.secret { margin: -2px 0 14px 0; }
+.secret a, .secret a:visited {
+  display: inline-block;
+  color: #d4d4e6;                 /* a ghost on the #e8e8f8 page */
+  background: transparent;
+  border: 1px dashed #d4d4e6;
+  text-decoration: none;
+  padding: 2px 8px;
+  font-size: 13px;
+  animation: ghost 2.4s ease-in-out infinite;
+}
+.secret a:hover, .secret a:focus {
+  color: #ffff66;
+  background: #2222aa;
+  border: 1px solid #ffff66;
+  text-decoration: none;
+  outline: none;
+  animation: none;
+}
+@keyframes ghost {
+  0%, 100% { color:#d4d4e6; border-color:#d4d4e6; }
+  50%      { color:#b6b6d2; border-color:#b6b6d2; }
+}
+
+ul.bullets { list-style: square; }
+code, .mono { font-family:"Courier New", monospace; background:#ffffcc; padding:0 3px; }
