@@ -89,17 +89,6 @@
   el.textContent = d.toLocaleDateString();
 })();
 
-/* ---- the download button ---- */
-function dl(a) {
-  var name = (a.textContent || '').replace(/[^\w.]/g, '');
-  alert(
-    'DOWNLOAD: ' + name + '\n\n' +
-    'The file is not actually here.\n\n' +
-    'WoahSoft is a fictional company and this is a fictional download.\n' +
-    'Thank you for your interest and also for reading a dialog box.'
-  );
-}
-
 /* ---- guestbook. stores nothing. ---- */
 function signBook(e) {
   e.preventDefault();
