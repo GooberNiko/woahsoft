@@ -156,3 +156,39 @@ function signBook(e) {
     try { window.status = lines[i++ % lines.length]; } catch (e) {}
   }, 4000);
 })();
+
+/* ---- retractable comment sections.
+        the arrow flips, the block goes away, and the browser remembers
+        which ones you closed. that last part is the only modern thing
+        on this entire website. ---- */
+(function () {
+  var heads = document.getElementsByClassName('ctoggle');
+  if (!heads.length) return;
+
+  function remember(id, closed) {
+    try { localStorage.setItem('woahsoft.' + id, closed ? '1' : '0'); } catch (e) {}
+  }
+  function recall(id) {
+    try { return localStorage.getItem('woahsoft.' + id) === '1'; } catch (e) { return false; }
+  }
+
+  function paint(head, box, closed) {
+    box.className = closed ? 'comments retracted' : 'comments';
+    head.getElementsByClassName('carrow')[0].innerHTML = closed ? '&#9658;' : '&#9660;';
+    head.getElementsByClassName('chint')[0].textContent = closed ? '[show]' : '[hide]';
+  }
+
+  for (var i = 0; i < heads.length; i++) {
+    (function (head) {
+      var box = document.getElementById(head.getAttribute('data-target'));
+      if (!box) return;
+      var closed = recall(box.id);
+      paint(head, box, closed);
+      head.onclick = function () {
+        closed = !closed;
+        paint(head, box, closed);
+        remember(box.id, closed);
+      };
+    })(heads[i]);
+  }
+})();
