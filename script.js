@@ -169,7 +169,9 @@ function signBook(e) {
     try { localStorage.setItem('woahsoft.' + id, closed ? '1' : '0'); } catch (e) {}
   }
   function recall(id) {
-    try { return localStorage.getItem('woahsoft.' + id) === '1'; } catch (e) { return false; }
+    /* closed unless this viewer has opened it before. the page ships collapsed
+       so it also stays collapsed with scripting off. */
+    try { return localStorage.getItem('woahsoft.' + id) !== '0'; } catch (e) { return true; }
   }
 
   function paint(head, box, closed) {
