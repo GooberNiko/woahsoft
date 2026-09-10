@@ -66,6 +66,75 @@
   note.style.visibility = 'hidden';
 })();
 
+/* ---- the credits. the scroll is tied to the song's clock, not a timer,
+        so THE END lands when the music does even if the tab lags. ---- */
+(function () {
+  var screen = document.getElementById('screen');
+  var roll = document.getElementById('roll');
+  var audio = document.getElementById('theme');
+  if (!screen || !roll || !audio) return;
+
+  var overlay = document.getElementById('overlay');
+  var btn = document.getElementById('overlaybtn');
+  var note = document.getElementById('overlaynote');
+  var endcard = document.getElementById('endcard');
+  var clock = document.getElementById('scrtime');
+  var HOLD = 3; /* seconds THE END sits still before the music stops */
+
+  function fmt(t) {
+    t = Math.floor(t || 0);
+    return Math.floor(t / 60) + ':' + (t % 60 < 10 ? '0' : '') + (t % 60);
+  }
+
+  function place() {
+    var h = screen.clientHeight;
+    var start = h;
+    var end = h / 2 - (endcard.offsetTop + endcard.offsetHeight / 2);
+    var dur = audio.duration || 55;
+    var p = Math.min(1, audio.currentTime / Math.max(1, dur - HOLD));
+    roll.style.transform = 'translateY(' + (start + (end - start) * p) + 'px)';
+    clock.textContent = fmt(audio.currentTime) + ' / ' + fmt(dur);
+  }
+
+  function tick() {
+    place();
+    if (!audio.paused) requestAnimationFrame(tick);
+  }
+
+  function show(label, sub, atEnd) {
+    btn.innerHTML = label;
+    note.textContent = sub;
+    overlay.className = atEnd ? 'overlay at-end' : 'overlay';
+    overlay.hidden = false;
+  }
+
+  function go() {
+    if (audio.ended) audio.currentTime = 0;
+    audio.play().then(function () {
+      overlay.hidden = true;
+      tick();
+    }, function () {
+      show('&#9658; ROLL THE CREDITS', 'the browser said no. click again.');
+    });
+  }
+
+  screen.onclick = function () {
+    if (audio.paused) go();
+    else audio.pause();
+  };
+  audio.onpause = function () {
+    if (!audio.ended) show('&#9658; RESUME', 'paused. the credits will wait.');
+  };
+  audio.onended = function () {
+    place();
+    show('&#8634; ROLL THEM AGAIN', 'that was the whole thing.', true);
+  };
+  audio.onloadedmetadata = place;
+  audio.ontimeupdate = place; /* backup for when the tab throttles animation frames */
+  window.addEventListener('resize', place);
+  place();
+})();
+
 /* ---- server uptime, which resets when you load the page,
         which is arguably not uptime ---- */
 (function () {

@@ -19,6 +19,7 @@ Static HTML/CSS/JS in the style of a personal software page from about 1999 to
 | `software.html` | Downloads. There are not any yet. |
 | `about.html` | Company info for the company that does not exist |
 | `guestbook.html` | A guestbook. It saves nothing. |
+| `credits.html` | Scrolling end credits, synced to `audio/woahsoft-theme.mp3` |
 
 ## The MIDI jukebox
 

@@ -349,5 +349,74 @@ h2.ctoggle:hover .chint { color: #cc0066; }
   50%      { color:#b6b6d2; border-color:#b6b6d2; }
 }
 
+/* ---------- CREDITS. the movie screen. ---------- */
+.wide { padding: 12px 16px 20px 16px; background: #e8e8f8; }
+.screen {
+  position: relative;
+  height: 440px;
+  background: #000000;
+  border: 4px ridge #4444cc;
+  overflow: hidden;
+  cursor: pointer;
+  user-select: none; -webkit-user-select: none;
+}
+/* fade the top and bottom edges like the credits are coming out of the dark */
+.screen:before, .screen:after {
+  content: ""; position: absolute; left: 0; right: 0; height: 70px;
+  z-index: 2; pointer-events: none;
+}
+.screen:before { top: 0; background: linear-gradient(#000000, transparent); }
+.screen:after { bottom: 0; background: linear-gradient(transparent, #000000); }
+
+.roll {
+  position: absolute; left: 0; right: 0; top: 0;
+  text-align: center;
+  color: #ffffff;
+  will-change: transform;
+}
+.roll .card { margin: 0 0 46px 0; padding: 0 40px; }
+.roll .role {
+  font-family: "Courier New", monospace;
+  font-size: 12px;
+  letter-spacing: 3px;
+  color: #8888cc;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.roll .name { font-size: 20px; color: #ffff66; line-height: 1.5; }
+.roll .name small { display: block; font-size: 12px; color: #aaaacc; }
+.roll .big { font-size: 30px; color: #ffffff; text-shadow: 3px 3px 0 #2222aa; }
+/* the logo is black ink, so it gets its own white card or it vanishes */
+.roll .logo {
+  width: 420px; max-width: 90%; margin: 0 auto; display: block;
+  background: #ffffff; border: 3px ridge #4444cc; padding: 6px 10px;
+}
+.roll .cast { font-size: 15px; color: #ffffff; line-height: 1.7; }
+.roll .cast span { color: #8888cc; }
+.roll .fine { font-size: 11px; color: #777799; line-height: 1.6; }
+.roll .end { font-size: 44px; }
+
+.overlay {
+  position: absolute; inset: 0; z-index: 3;
+  display: flex; align-items: center; justify-content: center;
+  flex-direction: column;
+  background: rgba(0, 0, 40, 0.55);
+  color: #ffff66;
+  font-family: "Courier New", monospace;
+  font-size: 12px;
+}
+.overlay[hidden] { display: none; }
+/* at the end, get out of the way of THE END */
+.overlay.at-end { justify-content: flex-end; padding-bottom: 28px; background: transparent; }
+.overlay .dlbtn { font-size: 16px; padding: 6px 18px; margin-bottom: 8px; }
+
+.screenbar {
+  font-family: "Courier New", monospace;
+  font-size: 11px;
+  color: #444466;
+  margin-top: 6px;
+  display: flex; justify-content: space-between;
+}
+
 ul.bullets { list-style: square; }
 code, .mono { font-family:"Courier New", monospace; background:#ffffcc; padding:0 3px; }
